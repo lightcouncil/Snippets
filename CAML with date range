@@ -1,0 +1,38 @@
+<View>
+	<Query>
+		<OrderBy>
+			<FieldRef Name="PublishDate" IncludeTimeValue="TRUE" Ascending="FALSE" />
+		</OrderBy>	
+		<Where>
+			<And>
+				<And>
+					<Leq>
+						<FieldRef Name="PublishDate" IncludeTimeValue="TRUE" />
+						<Value Type="DateTime">2018-10-26T12:47:04.934Z</Value>
+					</Leq>
+					<Or>
+						<IsNull>
+							<FieldRef Name="RemovalDate" />
+						</IsNull>
+						<Geq>
+							<FieldRef Name="RemovalDate" IncludeTimeValue="TRUE" />
+							<Value Type="DateTime">2018-10-26T12:47:04.934Z</Value>
+						</Geq>
+					</Or>
+				</And>
+				<Eq>
+					<FieldRef Name="ItemStatus" />
+					<Value Type="Choice">Ready to Publish</Value>
+				</Eq>
+			</And>
+		</Where>
+	</Query>
+	<RowLimit>5</RowLimit>
+	<ViewFields>
+		<FieldRef Name="ID" />
+		<FieldRef Name="PublishDate" />
+		<FieldRef Name="Title" />
+		<FieldRef Name="ItemStatus" />
+		<FieldRef Name="RemovalDate" />
+	</ViewFields>
+</View>
